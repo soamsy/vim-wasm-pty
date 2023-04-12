@@ -1,6 +1,6 @@
 # vim-wasm-pty
 
-Build scripts for making a WebAssembly version of Vim that works with xterm.js
+Build scripts for making a WebAssembly port of Vim that works with xterm.js
 
 ## Compiling WASM
 
