@@ -1,0 +1,6 @@
+[submodule "vim"]
+	path = vim
+	url = https://github.com/soamsy/vim
+[submodule "ncurses"]
+	path = ncurses
+	url = https://github.com/mirror/ncurses
