@@ -1,0 +1,6 @@
+services:
+  wasm:
+    build: .
+    entrypoint: ./docker-entrypoint.sh
+    volumes:
+      - .:/usr/src/app

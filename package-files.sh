@@ -1,4 +1,6 @@
-#!/usr/bin/env bash
+#!/bin/bash
+
+set -ex
 
 if [ ! -d ncurses/usr/local/share/terminfo/x ]; then
     echo "ncurses does not exist. Run git submodule update --init --recursive to download the ncurses submodule."

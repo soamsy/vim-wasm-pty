@@ -17,3 +17,7 @@ cd vim
   vim_cv_tty_group=world \
   vim_cv_getcwd_broken=no
 make install DESTDIR=$PWD
+
+mkdir -p ../out
+cp src/vim-core ../out/vim-core.js
+cp src/vim-core.wasm ../out/vim-core.wasm
