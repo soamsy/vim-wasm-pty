@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -ex
+set -e
 
 if [ ! -d ncurses/usr/local/share/terminfo/x ]; then
     echo "ncurses does not exist. Run git submodule update --init --recursive to download the ncurses submodule."
@@ -15,12 +15,15 @@ fi
 cd vim
 files=(../ncurses/usr/local/share/terminfo/x/xterm-256color@/usr/local/share/terminfo/x/xterm-256color)
 
-for file in usr/local/share/vim/vim90/**/*; do
-    [[ $file == usr/local/share/vim/vim90/lang* ]] && continue
-    [[ $file == usr/local/share/vim/vim90/doc* ]] && continue
-    [[ $file == usr/local/share/vim/vim90/spell* ]] && continue
-    [[ $file == usr/local/share/vim/vim90/tutor* ]] && continue
-    files+=($file)
+
+for file in $(find usr/local/share/vim/vim90 -type f); do
+    if [[ ! "$file" =~ usr/local/share/vim/vim90/lang.* ]] &&
+       [[ ! "$file" =~ usr/local/share/vim/vim90/doc.* ]] &&
+       [[ ! "$file" =~ usr/local/share/vim/vim90/spell.* ]] &&
+       [[ ! "$file" =~ usr/local/share/vim/vim90/tutor.* ]];
+    then
+        files+=($file)
+    fi
 done
 
 mkdir -p ../out

@@ -11,7 +11,12 @@ ncurses:
 package-files:
 	docker-compose run wasm ./package-files.sh
 
-clean:
-	docker-compose run wasm ./clean.sh
+clean: clean-ncurses clean-vim
 	
-.PHONY: all vim ncurses package-files clean
+clean-vim:
+	docker-compose run wasm bash -c 'cd vim && make distclean'
+	
+clean-ncurses:
+	docker-compose run wasm bash -c 'cd ncurses && make distclean'
+	
+.PHONY: all vim ncurses package-files clean clean-vim clean-ncurses
